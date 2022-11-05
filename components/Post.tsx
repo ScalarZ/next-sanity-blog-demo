@@ -20,9 +20,10 @@ const Post = ({ _ref, _createdAt, title, categories, author }: Props) => {
         <Image
           loader={myLoader}
           src={urlFor(_ref).url()}
-          blurDataURL={urlFor(_ref).blur(10).url()}
+          blurDataURL={urlFor(_ref).quality(40).blur(300).url()}
           alt="#"
           layout="fill"
+          quality={50}
         />
       </div>
       <div className="p-2">

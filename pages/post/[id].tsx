@@ -1,4 +1,5 @@
 import Image from "next/legacy/image";
+import { PortableText } from "@portabletext/react";
 
 const myLoader = ({ src }: { src: string }) => {
   return src;
@@ -41,21 +42,7 @@ const Blog = ({ post }: Props) => {
         ))}
       </ul>
       <main>
-        {post.body.map((block: any) =>
-          block.children ? (
-            <p key={block._key}>{block.children[0].text}</p>
-          ) : block.asset ? (
-            <Image
-              loader={myLoader}
-              src={urlFor(block?.asset._ref).url()}
-              blurDataURL={urlFor(block?.asset._ref).blur(10).url()}
-              alt="#"
-              height={200}
-              width={300}
-              objectFit="contain"
-            />
-          ) : null
-        )}
+        <PortableText value={post.body} />
       </main>
       <footer className="mt-6 text-xl text-green-400">
         <span className="flex items-center">
@@ -122,6 +109,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       post: post[0],
     },
+    revalidate: 1,
   };
 };
 export default Blog;

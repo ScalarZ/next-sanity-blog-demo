@@ -15,9 +15,11 @@ const Home = ({ posts }: Props) => {
         <h1 className="py-6 text-center text-red-500 font-bold text-4xl">
           Welcome To Next-Sanity Blog
         </h1>
-        <ul className="mt-4 grid grid-cols-3 gap-x-10 gap-y-12
+        <ul
+          className="mt-4 grid grid-cols-3 gap-x-10 gap-y-12
         max-lg:grid-cols-2 max-lg:gap-x-10
-        max-sm:grid-cols-1 max-sm:px-10">
+        max-sm:grid-cols-1 max-sm:px-10"
+        >
           {posts.map((post) => (
             <Link href={`post/${post?.slug.current}`} key={post._id}>
               <Post
@@ -55,6 +57,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       posts,
     },
+    revalidate: 1,
   };
 };
 export default Home;

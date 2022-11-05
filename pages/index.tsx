@@ -8,7 +8,6 @@ interface Props {
 }
 
 const Home = ({ posts }: Props) => {
-  console.log(posts);
   return (
     <div className="p-4 min-h-screen bg-gray-900 text-white">
       <main className="mx-auto max-w-7xl">
